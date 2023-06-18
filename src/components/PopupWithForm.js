@@ -14,8 +14,6 @@ function PopupWithForm({
 
   return (
     <div
-
-      // onKeyDown={(evt) => console.log(evt.key)}
       className={`popup popup_type_${popupName} ${
         isOpen ? `popup_opened` : ""
       }`}
