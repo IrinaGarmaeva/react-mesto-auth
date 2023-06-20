@@ -1,30 +1,57 @@
-import React from "react";
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
-function Register() {
+function Register({ onRegister}) {
+  const [formValue, setFormValue] = useState({
+    email: "",
+    password: "",
+  });
+
+  function handleSubmit(evt) {
+    evt.preventDefault();
+    onRegister(formValue.email, formValue.password);
+  }
+
+  function handleChange(evt) {
+    const { name, value } = evt.target;
+
+    setFormValue({
+      ...formValue,
+      [name]: value,
+    });
+  }
+
   return (
     <div className="register auth">
       <h2 className="auth__title">Регистрация</h2>
-      <form className="auth__form">
+      <form onSubmit={handleSubmit} className="auth__form">
         <fieldset className="auth__fieldset">
-        <input
-          name="email"
-          type="email"
-          className="auth__input"
-          placeholder="Email"
-          required
-        ></input>
-        <input
-          name="password"
-          type="password"
-          className="auth__input"
-          placeholder="Пароль"
-          required
-        ></input>
+          <input
+            value={formValue.email}
+            onChange={handleChange}
+            name="email"
+            type="email"
+            className="auth__input"
+            placeholder="Email"
+            required
+          ></input>
+          <input
+            value={formValue.password}
+            onChange={handleChange}
+            name="password"
+            type="password"
+            className="auth__input"
+            placeholder="Пароль"
+            required
+          ></input>
         </fieldset>
         <button className="auth__button">Войти</button>
       </form>
-      <p className="auth__login"><Link to="/sign-in" className="auth__login">Уже зарегистрированы? Войти</Link></p>
+      {/* <p className="auth__login"> */}
+        <Link to="/sign-in" className="auth__login">
+          Уже зарегистрированы? Войти
+        </Link>
+      {/* </p> */}
     </div>
   );
 }
