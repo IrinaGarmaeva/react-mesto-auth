@@ -26,7 +26,7 @@ function App() {
   const [cards, setCards] = useState([]);
   const [deletedCard, setDeletedCard] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
   const [isRegister, setIsRegister] = useState(null);
   const [userEmail, setUserEmail] = useState("");
@@ -148,13 +148,13 @@ function App() {
       auth
         .getToken(token)
         .then((res) => {
-          if(!res) {
-            return
+          if (!res) {
+            return;
           }
           if (res) {
             setIsLoggedIn(true);
             setUserEmail(res.data.email);
-            navigate('/', {replace: true});
+            navigate("/", { replace: true });
           }
         })
         .catch((err) => {
@@ -191,7 +191,7 @@ function App() {
     auth
       .authorize(email, password)
       .then((data) => {
-        console.log(data)
+        console.log(data);
         setIsLoggedIn(true);
         localStorage.setItem("token", data.token);
         setUserEmail(email);
@@ -204,9 +204,10 @@ function App() {
 
   function signOut() {
     localStorage.removeItem("token");
-    navigate("/sign-in", { replace: true });
     setUserEmail("");
     setIsLoggedIn(false);
+    navigate("/sign-in", { replace: true });
+    console.log("LOGGED OUT");
   }
 
   return (
@@ -217,26 +218,47 @@ function App() {
           <Routes>
             <Route
               path="/sign-up"
-              element={isLoggedIn ? <Navigate to='/' replace/> : <Register onRegister={handleRegister} />}
+              element={
+                isLoggedIn ? (
+                  <Navigate to="/" replace />
+                ) : (
+                  <Register onRegister={handleRegister} />
+                )
+              }
             />
-            <Route path="/sign-in" element={isLoggedIn ? <Navigate to='/' replace/> : <Login onLogin={handleLogin} />} />
+            <Route
+              path="/sign-in"
+              element={
+                isLoggedIn ? (
+                  <Navigate to="/" replace />
+                ) : (
+                  <Login onLogin={handleLogin} />
+                )
+              }
+            />
             <Route
               path="/"
               element={
                 <ProtectedRoute
-                  element={<Main cards={cards}
-                  onEditProfile={handleEditProfileClick}
-                  onAddPlace={handleAddPlaceClick}
-                  onEditAvatar={handleEditAvatarClick}
-                  onCardClick={handleCardClick}
-                  onCardLike={handleCardLike}
-                  onDeleteButtonClick={handleDeleteButtonClick}/>}
+                  element={
+                    <>
+                      <Main
+                        cards={cards}
+                        onEditProfile={handleEditProfileClick}
+                        onAddPlace={handleAddPlaceClick}
+                        onEditAvatar={handleEditAvatarClick}
+                        onCardClick={handleCardClick}
+                        onCardLike={handleCardLike}
+                        onDeleteButtonClick={handleDeleteButtonClick}
+                      />
+                      <Footer />
+                    </>
+                  }
                   isLoggedIn={isLoggedIn}
                 />
               }
             />
           </Routes>
-          <Footer />
           <InfoTooltip
             onClose={closeAllPopups}
             isRegister={isRegister}
