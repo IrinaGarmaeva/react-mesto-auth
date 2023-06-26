@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
+import { Routes, Route, Navigate, useNavigate, useLocation } from "react-router-dom";
 import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
@@ -32,6 +32,7 @@ function App() {
   const [userEmail, setUserEmail] = useState("");
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -55,6 +56,7 @@ function App() {
 
   function handleAddPlaceClick() {
     setIsAddPlacePopupOpen(true);
+    setIsLoading(false);
   }
 
   function handleEditAvatarClick() {
@@ -154,7 +156,7 @@ function App() {
           if (res) {
             setIsLoggedIn(true);
             setUserEmail(res.data.email);
-            navigate("/", { replace: true });
+            navigate(location.pathname);
           }
         })
         .catch((err) => {
@@ -169,6 +171,7 @@ function App() {
   }, []);
 
   function handleRegister(email, password) {
+    setIsLoading(true);
     auth
       .register(email, password)
       .then(() => {
@@ -187,7 +190,7 @@ function App() {
     if (!email || !password) {
       return;
     }
-
+    setIsLoading(true);
     auth
       .authorize(email, password)
       .then((data) => {
@@ -222,7 +225,7 @@ function App() {
                 isLoggedIn ? (
                   <Navigate to="/" replace />
                 ) : (
-                  <Register onRegister={handleRegister} />
+                  <Register onRegister={handleRegister} isLoading={isLoading}/>
                 )
               }
             />
@@ -232,7 +235,7 @@ function App() {
                 isLoggedIn ? (
                   <Navigate to="/" replace />
                 ) : (
-                  <Login onLogin={handleLogin} />
+                  <Login onLogin={handleLogin} isLoading={isLoading}/>
                 )
               }
             />

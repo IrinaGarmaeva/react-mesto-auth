@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
-function Login({ onLogin }) {
+
+function Login({ onLogin, isLoading }) {
   const [formValue, setFormValue] = useState({
     email: '',
     password: '',
@@ -8,7 +9,6 @@ function Login({ onLogin }) {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    console.log('LOGGED IN')
     onLogin(formValue.email, formValue.password);
   }
 
@@ -45,7 +45,7 @@ function Login({ onLogin }) {
             required
           ></input>
         </fieldset>
-        <button className="auth__button">Войти</button>
+        <button className="auth__button">{isLoading ? 'Вход ...' : 'Войти'}</button>
       </form>
     </div>
   );
