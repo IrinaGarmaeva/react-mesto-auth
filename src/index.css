@@ -17,6 +17,11 @@
 @import url('./blocks/header/__signout-button-container/header__signout-button-container.css');
 @import url('./blocks/header/__signout-button/header__signout-button.css');
 
+@import url('./blocks/notfound/notfound.css');
+@import url('./blocks/notfound/__block/notfound__block.css');
+@import url('./blocks/notfound/__title/notfound__title.css');
+@import url('./blocks/notfound/__subtitle/notfound__subtitle.css');
+@import url('./blocks/notfound/__button/notfound__button.css');
 
 @import url('./blocks/container/container.css');
 @import url('./blocks/profile/profile.css');

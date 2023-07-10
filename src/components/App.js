@@ -12,6 +12,7 @@ import AddPlacePopup from "./AddPlacePopup";
 import ConfirmPopup from "./ConfirmPopup";
 import Register from "./Register";
 import Login from "./Login";
+import NotFound from "./NotFound";
 import InfoTooltip from "./InfoTooltip";
 import { ProtectedRoute } from "./ProtectedRoute";
 import * as auth from "../auth";
@@ -261,6 +262,7 @@ function App() {
                 />
               }
             />
+            <Route path='/*' element={<NotFound />} />
           </Routes>
           <InfoTooltip
             onClose={closeAllPopups}
