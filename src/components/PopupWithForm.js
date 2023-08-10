@@ -10,7 +10,15 @@ function PopupWithForm({
   isOpen,
   onClose,
   onSubmit,
+  resetForm,
 }) {
+
+  function handleClosePopup() {
+    onClose();
+    if(resetForm) {
+      resetForm();
+    }
+  }
 
   return (
     <div
@@ -23,7 +31,7 @@ function PopupWithForm({
         <button
           className="popup__close-button"
           type="button"
-          onClick={onClose}
+          onClick={handleClosePopup}
         ></button>
         <h2 className="popup__title">{title}</h2>
         <form

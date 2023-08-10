@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
+
 function Register({ onRegister, isLoading }) {
   const [formValue, setFormValue] = useState({
     email: "",

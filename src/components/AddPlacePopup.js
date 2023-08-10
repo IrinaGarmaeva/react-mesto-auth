@@ -1,31 +1,26 @@
 import React, { useState } from "react";
 import PopupWithForm from "./PopupWithForm";
+import {useFormAndValidation} from '../hooks/useFormAndValidation';
 
 
 function AddPlacePopup({ isOpen, onClose, onAddPlace, isLoading }) {
-  const[name, setName] = React.useState('');
-  const[link, setLink] = React.useState('');
+  const {values, errors, isValid, handleChange, resetForm} = useFormAndValidation();
 
-  React.useEffect(() => {
-    setName('')
-    setLink('')
-  }, [isOpen])
+  // const[name, setName] = useState('');
+  // const[link, setLink] = useState('');
+
+  // React.useEffect(() => {
+  //   setName('')
+  //   setLink('')
+  // }, [isOpen])
 
   function handleSubmit(evt) {
     evt.preventDefault();
 
     onAddPlace({
-      name: name,
-      link: link,
+      values: values,
+      resetForm: resetForm,
     })
-  }
-
-  function handleChangeName(evt) {
-    setName(evt.target.value)
-  }
-
-  function handleChangeLink(evt) {
-    setLink(evt.target.value)
   }
 
   return (
@@ -39,11 +34,12 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace, isLoading }) {
           onClose={onClose}
           onSubmit={handleSubmit}
           isLoading={isLoading}
+          resetForm={resetForm}
           children={
             <fieldset className="popup__fieldset">
               <label className="popup__field">
                 <input
-                  value={name}
+                  value={values.name || ''}
                   name="name"
                   type="text"
                   className="popup__input popup__input_el_place-name"
@@ -51,21 +47,21 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace, isLoading }) {
                   minLength="2"
                   maxLength="30"
                   required
-                  onChange={handleChangeName}
+                  onChange={handleChange}
                 />
-                <span className="popup__input-error card-name-error"></span>
+                <span className="popup__input-error card-name-error">{() => console.log(errors.name)}</span>
               </label>
               <label className="popup__field">
                 <input
-                  value={link}
+                  value={values.link || ''}
                   name="link"
                   type="url"
                   className="popup__input popup__input_el_place-link"
                   placeholder="Ссылка на картинку"
                   required
-                  onChange={handleChangeLink}
+                  onChange={handleChange}
                 />
-                <span className="popup__input-error card-link-error"></span>
+                <span className="popup__input-error card-link-error">{errors.link}</span>
               </label>
             </fieldset>
           }

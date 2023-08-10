@@ -137,12 +137,15 @@ function App() {
       .catch((error) => console.log(`Error: ${error.status}`));
   }
 
-  function handleAddNewCard({ name, link }) {
+  function handleAddNewCard({ values, resetForm }) {
     setIsLoading(true);
     api
-      .addNewCard({ newName: name, newLink: link })
-      .then((newCard) => setCards([newCard, ...cards]))
-      .then(() => closeAllPopups())
+      .addNewCard({ newName: values.name, newLink: values.link })
+      .then((newCard) => {
+        setCards([newCard, ...cards]);
+        resetForm();
+        closeAllPopups();
+      })
       .catch((error) => console.log(`Error: ${error.status}`));
   }
   function checkToken() {
@@ -169,6 +172,7 @@ function App() {
 
   useEffect(() => {
     checkToken();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function handleRegister(email, password) {
