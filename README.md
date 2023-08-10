@@ -2,7 +2,7 @@
 
 ## Description
 
-Project `Mesto` is spa where users can share photos, delete them, and like them, as well as change user information and avatar. Forms are validated on the user's side. It's the second stage of creating a social network partially replicates the functionality of Instagram.
+Project `Mesto` is spa where users can share photos, delete them, and like them, as well as change user information and avatar. Forms are validated on the user's side. It's the second stage of creating a social network partially replicates the functionality of Instagram. <br>
 [Previous project version on vanilla JS](https://github.com/IrinaGarmaeva/mesto-react)
 
 ## Functionality
