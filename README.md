@@ -1,8 +1,8 @@
-# Edicational purpose project "Mesto" on React from [Yandex Practicum](https://practicum.yandex.ru/) Web-developer course.
+# Educational purpose project "Mesto" on React with authentication from [Yandex Practicum](https://practicum.yandex.ru/) Web-developer course.
 
 ## Description
 
-Project `Mesto` is spa where users can share photos, delete them, and like them, as well as change user information and avatar. Forms are validated on the user's side. It's the second stage of creating a social network partially replicates the functionality of Instagram. <br>
+Project `Mesto` is a SPA where users can share photos, delete them, and like them, as well as change user information and avatar. Forms are validated on the user's side. It's the second stage of creating a social network partially replicates the functionality of Instagram. <br>
 [Previous project version on vanilla JS](https://github.com/IrinaGarmaeva/mesto-react)
 
 ## Functionality
@@ -66,11 +66,11 @@ Run app:
 
   `npm run start`
 
-## Figma designs:
+## Figma design:
 
-- [Figma 4](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4);
-- [Figma 5](https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5);
-- [Figma 6-7](https://www.figma.com/file/kRVLKwYG3d1HGLvh7JFWRT/JavaScript.-Sprint-6);
-- [Figma 9](https://www.figma.com/file/PSdQFRHoxXJFs2FH8IXViF/JavaScript-9-sprint);
-- [Figma 12](https://www.figma.com/file/5H3gsn5lIGPwzBPby9jAOo/JavaScript.-Sprint-12).
+- [Figma Layout 4](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4);
+- [Figma Layout 5](https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5);
+- [Figma Layout 6-7](https://www.figma.com/file/kRVLKwYG3d1HGLvh7JFWRT/JavaScript.-Sprint-6);
+- [Figma Layout 9](https://www.figma.com/file/PSdQFRHoxXJFs2FH8IXViF/JavaScript-9-sprint);
+- [Figma Layout 12](https://www.figma.com/file/5H3gsn5lIGPwzBPby9jAOo/JavaScript.-Sprint-12).
 
